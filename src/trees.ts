@@ -1,4 +1,3 @@
-
 export type Tree = [] | [Tree, Tree];
 export type Tree7 = [Tree, Tree, Tree, Tree, Tree, Tree, Tree];
 
@@ -18,10 +17,11 @@ const mapping: [Pat, Pat7][] = [
   [[0, [1, [2, [3, [4, [5, [6, 7]]]]]]], [0, 1, 2, 3, 4, 5, [6, 7]]],
 ];
 
-const vars: Record<number, Tree> = {};
+export let vars: Tree[] = [];
 
 export function expand(tree: Tree): Tree7 {
   for (const [pat, pat7] of mapping) {
+    vars = [];
     if (match(tree, pat)) {
       return reconstruct7(pat7);
     }
@@ -31,6 +31,7 @@ export function expand(tree: Tree): Tree7 {
 
 export function collapse(tree7: Tree7): Tree {
   for (const [pat, pat7] of mapping) {
+    vars = [];
     if (match7(tree7, pat7)) {
       return reconstruct(pat);
     }

@@ -32,12 +32,3 @@ svg {
   max-width: 100%;
   max-height: 100%;
 }
-
-circle {
-  fill: #bdc3c7;
-}
-
-line {
-  stroke: #bdc3c7;
-  pointer-events: none;
-}
